@@ -56,6 +56,7 @@
                (:file "mode-line")
                (:file "color")
                (:file "wse")
+               (:file "power")
                ;; keep this last so it always gets recompiled if
                ;; anything changes
                (:file "version")))

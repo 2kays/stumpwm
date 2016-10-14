@@ -18,7 +18,11 @@
 
 (in-package :stumpwm)
 
-(export '())
+(export '(*current-power-mode*
+          *power-modes*
+          set-power-command
+          shutdown
+          reboot))
 
 ;; ---
 ;; autodetect whether systemctl is available. if not, perhaps autodetect other
@@ -62,7 +66,7 @@ provided, @var{*custom-power-mode*} is set to 'custom."
       (setf *power-modes* (cons mode without-custom))
       (setf *current-power-mode* 'custom))))
 
-(defcommand shutdown (&key (mode *current-power-mode*)) ()
+(defcommand shutdown (&key (mode *current-power-mode*) no-prompt) ()
   "Shuts down the system (using @var{mode} if provided, else uses 
 @var{*current-power-mode*}, TODO: prompt the user unless @{no-prompt} is t."
   (let ((command (elt (assoc mode *power-modes*) 1)))
