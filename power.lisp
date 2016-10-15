@@ -40,7 +40,9 @@
 
 (defparameter *current-power-mode*
   (cond ((systemctl-present) 'systemctl)
-        (t 'standard)))
+        (t 'standard))
+  "The current power mode used by the power commands. Defaults to 'SYSTEMCTL 
+if systemctl is detected, otherwise is 'STANDARD.")
 
 (defparameter *power-modes*
   '((systemctl "systemctl poweroff" "systemctl reboot"
